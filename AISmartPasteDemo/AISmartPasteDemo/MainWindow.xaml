@@ -1,0 +1,137 @@
+﻿<Window x:Class="AISmartPasteDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AISmartPasteDemo" 
+        xmlns:inputLayout="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        <!-- Set the DataContext to the FeedbackFormViewModel -->
+        <Grid.DataContext>
+            <local:FeedbackFormViewModel x:Name="feedbackFormViewModel"/>
+        </Grid.DataContext>
+
+        <!-- Feedback Form Background Image -->
+        <Image Stretch="Fill"
+               Source="/AISmartPasteDemo;component/Assets/feedbackform.png" />
+
+        <!-- Feedback Form Container -->
+        <Border MaxHeight="550" 
+                Width="460" 
+                Background="{DynamicResource ContentBackgroundAlt1}"                                               
+                BorderBrush="{DynamicResource BorderAlt}"
+                BorderThickness="1" 
+                CornerRadius="10" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center">
+            <Grid Margin="10" >
+                <!-- Define the rows for the form layout -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <!-- Title Label for the Form -->
+                <Label Grid.ColumnSpan="4" Grid.Row="0" FontSize="16" FontWeight="Bold" Content="Feedback From" HorizontalContentAlignment="Center" />
+
+                <!-- Scrollable section for input fields -->
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <inputLayout:SfTextInputLayout x:Name="nameTextInputLayout" 
+                                                       Grid.Row="0" 
+                                                       Hint="Name" 
+                                                       Width="auto" 
+                                                       HelperText="Enter your name"
+                                                       HintFloatMode="Float"
+                                                       ContainerType="Outlined" >
+                            <TextBox Text="{Binding FeedbackForm.Name}" />
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout x:Name="emailTextInputLayout" 
+                                                       Grid.Row="1" 
+                                                       Hint="Email"
+                                                       HelperText="Enter your email"
+                                                       Margin="0,8,0,0"
+                                                       Width="auto"
+                                                       ContainerType="Outlined">
+                            <TextBox Text="{Binding FeedbackForm.Email}" />
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout x:Name="productNameTextInputLayout" 
+                                                       Grid.Row="2" 
+                                                       Margin="0,8,0,0"
+                                                       Hint="Product Name" 
+                                                       Width="auto" 
+                                                       HelperText="Example: Scheduler"
+                                                       ContainerType="Outlined">
+                            <TextBox Text="{Binding FeedbackForm.ProductName}"/>
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout x:Name="prodectVersionTextInputLayout" 
+                                                       Grid.Row="3" 
+                                                       Width="auto"
+                                                       Margin="0,8,0,0"
+                                                       HelperText="Example: 26.2.8"
+                                                       Hint="Prodect Version" 
+                                                       ContainerType="Outlined">
+                            <TextBox Text="{Binding FeedbackForm.ProductVersion}"/>
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout x:Name="ratingTextInputLayout" 
+                                                       Grid.Row="4" 
+                                                       Hint="Rating" 
+                                                       Margin="0,8,0,0"
+                                                       HelperText="Rating should be between 1 and 5"
+                                                       Width="auto" 
+                                                       ContainerType="Outlined">
+                            <TextBox Text="{Binding FeedbackForm.Rating}"/>
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout x:Name="commentsTextInputLayout" 
+                                                       Grid.Row="5" 
+                                                       Margin="0,8,0,0"
+                                                       Hint="Comments"
+                                                       Width="auto" 
+                                                       ContainerType="Outlined">
+                            <TextBox  Text="{Binding FeedbackForm.Comments}"
+                                      TextWrapping="Wrap"
+                                      AcceptsReturn="True" />
+                        </inputLayout:SfTextInputLayout>
+                    </Grid>
+                </ScrollViewer>
+
+                <!-- Buttons for Smart Paste and Submit -->
+                <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button x:Name="smartPasteButton" 
+                            Width="150" 
+                            Height="35" 
+                            HorizontalAlignment="Center" 
+                            Click="OnSmartPasteButtonClicked"
+                            Content="Smart Paste" 
+                            Style="{DynamicResource WPFPrimaryButtonStyle}"/>
+                    <Button x:Name="submitButton" Width="150" 
+                            Height="35" 
+                            Click="OnSubmitButtonClicked"
+                            Margin="50,0,0,0" 
+                            HorizontalAlignment="Right"
+                            Content="Submit"
+                            Style="{DynamicResource WPFPrimaryButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
