@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.17" />
+    <PackageReference Include="Microsoft.SemanticKernel" Version="1.17.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Syncfusion.SfTextInputLayout.WPF" Version="*" />
     <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="*" />
