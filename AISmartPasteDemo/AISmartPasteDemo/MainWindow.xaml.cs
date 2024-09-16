@@ -11,8 +11,8 @@
     public partial class MainWindow : Window
     {
         string clipboardText;
-        private AzureOpenAIService azureAIService = new AzureOpenAIService();
-        private readonly string mailPattern = @"^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@" + @"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\." +
+        SemanticKernelService semanticKernelService = new SemanticKernelService();
+        readonly string mailPattern = @"^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@" + @"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\." +
             @"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|" + @"([a-zA-Z]+[\w-]+\.)+[a-zA-Z]{2,4})$";
 
         public MainWindow()
@@ -45,7 +45,7 @@
             $"\n3. Final output must be Json format" +
             $"\n4. No need any explanation or comments in the output" +
             $"\n Please provide the valid JSON object without any additional formatting characters like backticks or newlines";
-            string finalResponse = await this.azureAIService.GetResponseFromGPT(prompt);
+            string finalResponse = await this.semanticKernelService.GetResponseFromGPT(prompt);
             this.ProcessSmartPasteData(finalResponse);
         }
 

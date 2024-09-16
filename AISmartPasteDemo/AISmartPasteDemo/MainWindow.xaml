@@ -36,7 +36,7 @@
                 </Grid.RowDefinitions>
 
                 <!-- Title Label for the Form -->
-                <Label Grid.ColumnSpan="4" Grid.Row="0" FontSize="16" FontWeight="Bold" Content="Feedback From" HorizontalContentAlignment="Center" />
+                <Label Grid.ColumnSpan="4" Grid.Row="0" FontSize="16" FontWeight="Bold" Content="Feedback Form" HorizontalContentAlignment="Center" />
 
                 <!-- Scrollable section for input fields -->
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" >

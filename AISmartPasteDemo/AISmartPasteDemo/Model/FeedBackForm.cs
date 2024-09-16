@@ -27,7 +27,7 @@
 
         public string Name
         {
-            get => name;
+            get => this.name;
             set
             {
                 if (this.name != value)
